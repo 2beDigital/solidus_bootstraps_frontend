@@ -1,10 +1,10 @@
 require 'bootstrap-sass/engine'
 
-module SpreeBootstrapFrontend
+module SpreeFrontendBootstrap
   class Engine < Rails::Engine
     require 'spree/core'
     isolate_namespace Spree
-    engine_name 'spree_bootstrap_frontend'
+    engine_name 'spree_frontend_bootstrap'
 
     config.autoload_paths += %W(#{config.root}/lib)
 
