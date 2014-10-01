@@ -15,8 +15,8 @@
           <div class="panel panel-default">
             <div class="panel-body">
               <p class="field" style='clear: both'>
-                <%= form.label :email %><br />
-                <%= form.text_field :email %>
+                <%= form.label :email %><span class="required">*</span><br />
+                <%= form.text_field :email, :class => 'form-control' %>
               </p>
             </div>
           </div>
