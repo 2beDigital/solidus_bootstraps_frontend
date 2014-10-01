@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
 
   s.add_runtime_dependency 'spree_auth_devise', '~> 2.2'
-  s.add_runtime_dependency 'spree_frontend_bootstrap'
+  s.add_runtime_dependency 'spree_bootstrap'
 
   s.add_development_dependency 'rspec-rails', '~> 3.0.0'
   s.add_development_dependency 'sass-rails', '~> 4.0.0'

@@ -11,5 +11,5 @@ tmp
 nbproject
 pkg
 *.swp
-spec/dummy
+frontend/spec/dummy
 .rvmrc

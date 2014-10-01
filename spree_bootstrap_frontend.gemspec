@@ -17,6 +17,6 @@ Gem::Specification.new do |s|
   s.required_ruby_version     = '>= 1.9.3'
   s.required_rubygems_version = '>= 1.8.23'
 
-  s.add_runtime_dependency 'spree_frontend_bootstrap'
+  s.add_runtime_dependency 'spree_bootstrap'
   s.add_runtime_dependency 'spree_auth_devise_bootstrap'
 end
