@@ -57,11 +57,10 @@ describe "Checkout", inaccessible: true do
         add_mug_to_cart
         click_button "Checkout"
 
-        fill_in "order_email", :with => "test@example.com"
-        click_on 'Continue'
         fill_in_address
-
+        fill_in "order_email", :with => "test@example.com"
         click_button "Save and Continue"
+
         expect(page).to_not have_content("undefined method `promotion'")
         click_button "Save and Continue"
         expect(page).to have_content("Shipping total $10.00")
@@ -73,8 +72,6 @@ describe "Checkout", inaccessible: true do
       before do
         add_mug_to_cart
         click_button "Checkout"
-        fill_in "order_email", :with => "test@example.com"
-        click_on 'Continue'
       end
 
       it "should not show 'Free Shipping' when there are no shipments" do
@@ -100,7 +97,7 @@ describe "Checkout", inaccessible: true do
       Spree::CheckoutController.any_instance.stub(:try_spree_current_user => user)
     end
 
-    it "redirects to payment page", js: true do
+    it "redirects to payment page", inaccessible: true do
       visit spree.checkout_state_path(:delivery)
       click_button "Save and Continue"
       choose "Credit Card"
@@ -125,7 +122,6 @@ describe "Checkout", inaccessible: true do
       click_button "Checkout"
 
       fill_in "order_email", :with => "test@example.com"
-      click_on 'Continue'
       fill_in_address
 
       click_button "Save and Continue"
@@ -268,7 +264,6 @@ describe "Checkout", inaccessible: true do
       add_mug_to_cart
       click_on "Checkout"
       fill_in "order_email", :with => "test@example.com"
-      click_on 'Continue'
       fill_in_address
       click_on "Save and Continue"
       click_on "Save and Continue"
@@ -292,7 +287,6 @@ describe "Checkout", inaccessible: true do
       add_mug_to_cart
       click_on "Checkout"
       fill_in "order_email", :with => "test@example.com"
-      click_on 'Continue'
       fill_in_address
       click_on "Save and Continue"
       click_on "Save and Continue"
@@ -359,7 +353,6 @@ describe "Checkout", inaccessible: true do
       click_on "Checkout"
 
       fill_in "order_email", :with => "test@example.com"
-      click_on 'Continue'
       fill_in_address
       click_on "Save and Continue"
 

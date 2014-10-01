@@ -33,8 +33,6 @@ describe "Address", inaccessible: true do
     context "but has no state" do
       it "shows the state input field" do
         click_button "Checkout"
-        fill_in "order_email", :with => "test@example.com"
-        click_button 'Continue'
 
         select canada.name, :from => @country_css
         page.should have_selector(@state_select_css, visible: false)
@@ -51,8 +49,6 @@ describe "Address", inaccessible: true do
 
       it "shows the state collection selection" do
         click_button "Checkout"
-        fill_in "order_email", :with => "test@example.com"
-        click_button 'Continue'
 
         select canada.name, :from => @country_css
         page.should have_selector(@state_select_css, visible: true)
@@ -69,8 +65,6 @@ describe "Address", inaccessible: true do
       it "clears the state name" do
         skip "This is failing on the CI server, but not when you run the tests manually... It also does not fail locally on a machine."
         click_button "Checkout"
-        fill_in "order_email", :with => "test@example.com"
-        click_button 'Continue'
 
         select canada.name, :from => @country_css
         page.find(@state_name_css).set("Toscana")
@@ -91,8 +85,6 @@ describe "Address", inaccessible: true do
 
     it "shows a disabled state input field" do
        click_button "Checkout"
-       fill_in "order_email", :with => "test@example.com"
-       click_button 'Continue'
 
        select france.name, :from => @country_css
        page.should have_selector(@state_select_css, visible: false)
