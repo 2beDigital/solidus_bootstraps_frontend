@@ -1,5 +1,4 @@
 # encoding: UTF-8
-
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_auth_devise_bootstrap'
@@ -18,8 +17,9 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_development_dependency 'spree_auth_devise', '~> 2.2'
-  s.add_development_dependency 'spree_bootstrap_frontend', '~> 2.4.0.beta'
+  s.add_runtime_dependency 'spree_auth_devise', '~> 2.2'
+  s.add_runtime_dependency 'spree_frontend_bootstrap'
+
   s.add_development_dependency 'rspec-rails', '~> 3.0.0'
   s.add_development_dependency 'sass-rails', '~> 4.0.0'
   s.add_development_dependency 'coffee-rails', '~> 4.0.0'

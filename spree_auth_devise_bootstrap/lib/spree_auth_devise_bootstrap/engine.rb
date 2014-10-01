@@ -1,4 +1,4 @@
-module SpreeAuthDeviseBootStrap
+module SpreeAuthDeviseBootstrap
   class Engine < Rails::Engine
     isolate_namespace Spree
     engine_name 'spree_auth_devise_bootstrap'
