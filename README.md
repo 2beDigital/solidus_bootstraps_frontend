@@ -60,7 +60,7 @@ Customizing
 
 Running the above `spree_bootstrap_frontend:install` command copies the stylesheet to `app/assets/stylesheets/spree/frontend/spree_bootstrap_frontend.css.scss`. Use this as your base stylesheet and edit as required.
 
-To style your spree store just override the bootstrap 3 variables. The full list of bootstrap variables can be found [here](https://github.com/twbs/bootstrap-sass/blob/master/vendor/assets/stylesheets/bootstrap/_variables.scss). You can override these by simply redefining the variable before the `@import` directive.
+To style your spree store just override the bootstrap 3 variables. The full list of bootstrap variables can be found [here](https://github.com/twbs/bootstrap-sass/blob/master/assets/stylesheets/bootstrap/_variables.scss). You can override these by simply redefining the variable before the `@import` directive.
 For example:
 
 ```scss
