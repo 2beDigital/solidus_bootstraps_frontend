@@ -24,7 +24,6 @@ end
 
 require 'rspec/rails'
 require 'ffaker'
-require 'webmock'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
@@ -109,7 +108,7 @@ RSpec.configure do |config|
     if missing_translations.any?
       #binding.pry
       puts "Found missing translations: #{missing_translations.inspect}"
-      puts "In spec: #{RSpec.current_example.location}"
+      puts "In spec: #{example.location}"
     end
   end
 

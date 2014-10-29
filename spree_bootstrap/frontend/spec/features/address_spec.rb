@@ -65,7 +65,6 @@ describe "Address", type: :feature, inaccessible: true do
       it "clears the state name" do
         skip "This is failing on the CI server, but not when you run the tests manually... It also does not fail locally on a machine."
         click_button "Checkout"
-
         select canada.name, :from => @country_css
         page.find(@state_name_css).set("Toscana")
 

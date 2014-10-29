@@ -382,7 +382,7 @@ describe "Checkout", type: :feature, inaccessible: true do
     context "doesn't fill in coupon code input" do
       it "advances just fine" do
         click_on "Save and Continue"
-        expect(current_path).to match(spree.order_path(Spree::Order.last))
+        expect(current_path).to eql(spree.order_path(Spree::Order.last))
       end
     end
   end
