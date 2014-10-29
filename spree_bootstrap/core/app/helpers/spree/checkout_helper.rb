@@ -1,5 +1,10 @@
-Spree::CheckoutHelper.module_eval do
-	def checkout_progress
+module Spree
+  module CheckoutHelper
+    def checkout_states
+      @order.checkout_steps
+    end
+
+    def checkout_progress
       states = checkout_states
       items = states.map do |state|
         text = Spree.t("order_state.#{state}").titleize
@@ -27,4 +32,5 @@ Spree::CheckoutHelper.module_eval do
       end
       content_tag('ul', raw(items.join("\n")), class: 'progress-steps nav nav-pills nav-justified', id: "checkout-step-#{@order.state}")
     end
+  end
 end
