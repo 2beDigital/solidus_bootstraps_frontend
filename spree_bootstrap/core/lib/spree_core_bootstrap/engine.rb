@@ -1,11 +1,8 @@
-require 'bootstrap-sass/engine'
-
-module SpreeFrontendBootstrap
+module SpreeCoreBootstrap
   class Engine < Rails::Engine
+    require 'spree/core'
     isolate_namespace Spree
-    engine_name 'spree_frontend_bootstrap'
-
-    config.autoload_paths += %W(#{config.root}/lib)
+    engine_name 'spree_core_bootstrap'
 
     def self.activate
       Dir.glob(File.join(File.dirname(__FILE__), '../../app/**/*_decorator*.rb')) do |c|

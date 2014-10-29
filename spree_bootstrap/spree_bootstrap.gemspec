@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
 
   s.files       = `git ls-files`.split("\n")
   s.test_files  = `git ls-files -- spec/*`.split("\n")
-  s.require_paths = ['lib', 'frontend/lib']
+  s.require_paths = ['lib', 'frontend/lib', 'core/lib']
   s.requirements << 'none'
 
   s.add_runtime_dependency 'sass-rails', '~> 4.0'
