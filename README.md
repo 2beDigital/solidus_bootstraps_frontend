@@ -83,9 +83,12 @@ Contributing
 
 **Please fork and make a pull request.**
 
+spree_bootstrap_frontend is made up of two other gems, spree_bootstrap, and spree_auth_devise_bootstrap. Changes for
+spree are contained in spree_bootstrap, and changes for spree_auth_devise are contained in spree_auth_devise_bootstrap.
+
 Spree edge templates were last synced at spree/spree@b07b838. Feel free to patch in any newer changes and update this SHA.
 
-**Tests.** To get this to a stage that it can be maintained moving forwards getting all tests passing is the highest priority.
+Spree Auth Devise edge templates were last synced at spree/spree_auth_devise@761a9d5. Feel free to patch in any newer changes and update this SHA.
 
 - Raise bugs in github’s [issues tracker](https://github.com/200Creative/spree_bootstrap_frontend/issues).
 - Further discussion can be had in the [spree google group](https://groups.google.com/forum/#!forum/spree-user).

@@ -20,10 +20,11 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'spree_auth_devise', '~> 2.2'
   s.add_runtime_dependency 'spree_bootstrap'
 
-  s.add_development_dependency 'rspec-rails', '~> 3.0.0'
+  s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'pg'
   s.add_development_dependency 'sass-rails', '~> 4.0.0'
   s.add_development_dependency 'coffee-rails', '~> 4.0.0'
-  s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'rspec-rails', '~> 3.0.0'
   s.add_development_dependency 'factory_girl', '~> 4.4'
   s.add_development_dependency 'email_spec', '~> 1.5.0'
   s.add_development_dependency 'ffaker'
