@@ -22,9 +22,9 @@
 </div>
 
 <% if products.any? %>
-<div id="products" class="row" data-hook>
+<ul id="products" class="inline product-listing" data-hook>
   <% products.each do |product| %>
-    <% url = product_url(product, :taxon_id => @taxon.try(:id)) %>
+    <% url = product_path(product, :taxon_id => @taxon.try(:id)) %>
     <div id="product_<%= product.id %>" class="col-md-3 col-sm-6 product-list-item" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
       <div class="panel panel-default">
         <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
@@ -33,16 +33,18 @@
             <%= link_to truncate(product.name, :length => 50), url, :class => 'info', :itemprop => "name", :title => product.name %>
           </div>
           <div class="panel-footer text-center">
-            <span class="price selling lead" itemprop="price"><%= display_price(product) %></span>
+            <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+          	  <span class="price selling lead" itemprop="price"><%= display_price(product) %></span>
+            </span>
           </div>
         <% end %>
       </div>
     </div>
   <% end %>
   <% reset_cycle("classes") %>
-</div>
+</ul>
 <% end %>
 
 <% if paginated_products.respond_to?(:num_pages) %>
-  <%= paginate paginated_products, theme: 'twitter-bootstrap-3' %>
+  <%= paginate paginated_products %>
 <% end %>

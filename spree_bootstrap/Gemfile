@@ -1,8 +1,5 @@
 source 'https://rubygems.org'
 
-spree_branch = 'master'
-# Provides basic authentication functionality for testing parts of your engine
-gem 'rails', '4.1.4'
-gem 'spree', github: 'spree/spree', ref: '3d99f8c'
+gem 'spree', github: 'spree/spree', ref: 'b07b838'
 
 gemspec

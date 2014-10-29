@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Cart", inaccessible: true do
+describe "Cart", type: :feature, inaccessible: true do
   it "shows cart icon on non-cart pages" do
     visit spree.root_path
     expect(page).to have_selector("li#link-to-cart a", :visible => true)
@@ -37,12 +37,12 @@ describe "Cart", inaccessible: true do
     within("#line_items") do
       click_link "delete_line_item_1"
     end
-    expect(page).to_not have_content("Line items quantity must be an integer")
-    expect(page).to_not have_content("RoR Mug")
+    expect(page).not_to have_content("Line items quantity must be an integer")
+    expect(page).not_to have_content("RoR Mug")
     expect(page).to have_content("Your cart is empty")
 
     within "#link-to-cart" do
-      page.should have_content("Empty")
+      expect(page).to have_content("Empty")
     end
   end
 
@@ -52,12 +52,12 @@ describe "Cart", inaccessible: true do
     click_link "RoR Mug"
     click_button "add-to-cart-button"
 
-    page.should have_content("RoR Mug")
+    expect(page).to have_content("RoR Mug")
     click_on "Empty Cart"
-    page.should have_content("Your cart is empty")
+    expect(page).to have_content("Your cart is empty")
 
     within "#link-to-cart" do
-      page.should have_content("Empty")
+      expect(page).to have_content("Empty")
     end
   end
 

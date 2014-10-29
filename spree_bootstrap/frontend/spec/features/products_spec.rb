@@ -1,8 +1,12 @@
 # encoding: utf-8
 require 'spec_helper'
 
-describe "Visiting Products", inaccessible: true do
+describe "Visiting Products", type: :feature, inaccessible: true do
   include_context "custom products"
+
+  let(:store_name) do
+    ((first_store = Spree::Store.first) && first_store.name).to_s
+  end
 
   before(:each) do
     visit spree.root_path
@@ -10,10 +14,53 @@ describe "Visiting Products", inaccessible: true do
 
   it "should be able to show the shopping cart after adding a product to it" do
     click_link "Ruby on Rails Ringer T-Shirt"
-    page.should have_content("$19.99")
+    expect(page).to have_content("$19.99")
 
     click_button 'add-to-cart-button'
-    page.should have_content("Shopping Cart")
+    expect(page).to have_content("Shopping Cart")
+  end
+
+  describe 'meta tags and title' do
+    let(:jersey) { Spree::Product.find_by_name('Ruby on Rails Baseball Jersey') }
+    let(:metas) { { :meta_description => 'Brand new Ruby on Rails Jersey', :meta_title => 'Ruby on Rails Baseball Jersey Buy High Quality Geek Apparel', :meta_keywords => 'ror, jersey, ruby' } }
+
+    it 'should return the correct title when displaying a single product' do
+      click_link jersey.name
+      expect(page).to have_title('Ruby on Rails Baseball Jersey - ' + store_name)
+      within('div#product-description') do
+        within('h1.product-title') do
+          expect(page).to have_content('Ruby on Rails Baseball Jersey')
+        end
+      end
+    end
+
+    it 'displays metas' do
+      jersey.update_attributes metas
+      click_link jersey.name
+      expect(page).to have_meta(:description, 'Brand new Ruby on Rails Jersey')
+      expect(page).to have_meta(:keywords, 'ror, jersey, ruby')
+    end
+
+    it 'displays title if set' do
+      jersey.update_attributes metas
+      click_link jersey.name
+      expect(page).to have_title('Ruby on Rails Baseball Jersey Buy High Quality Geek Apparel')
+    end
+
+    it "doesn't use meta_title as heading on page" do
+      jersey.update_attributes metas
+      click_link jersey.name
+      within("h1") do
+        expect(page).to have_content(jersey.name)
+        expect(page).not_to have_content(jersey.meta_title)
+      end
+    end
+
+    it 'uses product name in title when meta_title set to empty string' do
+      jersey.update_attributes meta_title: ''
+      click_link jersey.name
+      expect(page).to have_title('Ruby on Rails Baseball Jersey - ' + store_name)
+    end
   end
 
   context "using Russian Rubles as a currency" do
@@ -33,7 +80,7 @@ describe "Visiting Products", inaccessible: true do
         visit spree.root_path
         within("#product_#{product.id}") do
           within(".price") do
-            page.should have_content("руб19.99")
+            expect(page).to have_content("руб19.99")
           end
         end
       end
@@ -41,7 +88,7 @@ describe "Visiting Products", inaccessible: true do
       it "on product page" do
         visit spree.product_path(product)
         within(".price") do
-          page.should have_content("руб19.99")
+          expect(page).to have_content("руб19.99")
         end
       end
 
@@ -50,7 +97,7 @@ describe "Visiting Products", inaccessible: true do
         click_button "Add To Cart"
         click_link "Home"
         within(".cart-info") do
-          page.should have_content("руб19.99")
+          expect(page).to have_content("руб19.99")
         end
       end
 
@@ -58,10 +105,8 @@ describe "Visiting Products", inaccessible: true do
         visit spree.product_path(product)
         click_button "Add To Cart"
         click_button "Checkout"
-        fill_in "order_email", :with => "test@example.com"
-        click_button 'Continue'
         within("tr[data-hook=item_total]") do
-          page.should have_content("руб19.99")
+          expect(page).to have_content("руб19.99")
         end
       end
     end
@@ -71,7 +116,7 @@ describe "Visiting Products", inaccessible: true do
     fill_in "keywords", :with => "shirt"
     click_button "Search"
 
-    page.all('#products .product-list-item').size.should == 1
+    expect(page.all('#products .product-list-item').size).to eq(1)
   end
 
   context "a product with variants" do
@@ -134,16 +179,16 @@ describe "Visiting Products", inaccessible: true do
 
     it "should not display no image available" do
       visit spree.root_path
-      page.should have_xpath("//img[contains(@src,'thinking-cat')]")
+      expect(page).to have_xpath("//img[contains(@src,'thinking-cat')]")
     end
   end
 
   it "should be able to hide products without price" do
-    page.all('#products .product-list-item').size.should == 9
+    expect(page.all('#products .product-list-item').size).to eq(9)
     Spree::Config.show_products_without_price = false
     Spree::Config.currency = "CAN"
     visit spree.root_path
-    page.all('#products .product-list-item').size.should == 0
+    expect(page.all('#products .product-list-item').size).to eq(0)
   end
 
 
@@ -151,7 +196,7 @@ describe "Visiting Products", inaccessible: true do
     within(:css, '#taxonomies') { click_link "Ruby on Rails" }
     check "Price_Range_Under_$10.00"
     within(:css, '#sidebar_products_search') { click_button "Search" }
-    page.should have_content("No products found")
+    expect(page).to have_content("No products found")
   end
 
   it "should be able to display products priced between 15 and 18 dollars" do
@@ -159,10 +204,10 @@ describe "Visiting Products", inaccessible: true do
     check "Price_Range_$15.00_-_$18.00"
     within(:css, '#sidebar_products_search') { click_button "Search" }
 
-    page.all('#products .product-list-item').size.should == 3
+    expect(page.all('#products .product-list-item').size).to eq(3)
     tmp = page.all('#products .product-list-item a').map(&:text).flatten.compact
     tmp.delete("")
-    tmp.sort!.should == ["Ruby on Rails Mug", "Ruby on Rails Stein", "Ruby on Rails Tote"]
+    expect(tmp.sort!).to eq(["Ruby on Rails Mug", "Ruby on Rails Stein", "Ruby on Rails Tote"])
   end
 
   it "should be able to display products priced between 15 and 18 dollars across multiple pages" do
@@ -171,13 +216,13 @@ describe "Visiting Products", inaccessible: true do
     check "Price_Range_$15.00_-_$18.00"
     within(:css, '#sidebar_products_search') { click_button "Search" }
 
-    page.all('#products .product-list-item').size.should == 2
+    expect(page.all('#products .product-list-item').size).to eq(2)
     products = page.all('#products .product-list-item a[itemprop=name]')
-    products.count.should == 2
+    expect(products.count).to eq(2)
 
     find('.pagination .next a').click
     products = page.all('#products .product-list-item a[itemprop=name]')
-    products.count.should == 1
+    expect(products.count).to eq(1)
   end
 
   it "should be able to display products priced 18 dollars and above" do
@@ -186,21 +231,21 @@ describe "Visiting Products", inaccessible: true do
     check "Price_Range_$20.00_or_over"
     within(:css, '#sidebar_products_search') { click_button "Search" }
 
-    page.all('#products .product-list-item').size.should == 4
+    expect(page.all('#products .product-list-item').size).to eq(4)
     tmp = page.all('#products .product-list-item a').map(&:text).flatten.compact
     tmp.delete("")
-    tmp.sort!.should == ["Ruby on Rails Bag",
+    expect(tmp.sort!).to eq(["Ruby on Rails Bag",
                          "Ruby on Rails Baseball Jersey",
                          "Ruby on Rails Jr. Spaghetti",
-                         "Ruby on Rails Ringer T-Shirt"]
+                         "Ruby on Rails Ringer T-Shirt"])
   end
 
   it "should be able to put a product without a description in the cart" do
     product = FactoryGirl.create(:base_product, :description => nil, :name => 'Sample', :price => '19.99')
     visit spree.product_path(product)
-    page.should have_content "This product has no description"
+    expect(page).to have_content "This product has no description"
     click_button 'add-to-cart-button'
-    page.should have_content "This product has no description"
+    expect(page).to have_content "This product has no description"
   end
 
   it "shouldn't be able to put a product without a current price in the cart" do
@@ -208,8 +253,8 @@ describe "Visiting Products", inaccessible: true do
     Spree::Config.currency = "CAN"
     Spree::Config.show_products_without_price = true
     visit spree.product_path(product)
-    page.should have_content "This product is not available in the selected currency."
-    page.should_not have_content "add-to-cart-button"
+    expect(page).to have_content "This product is not available in the selected currency."
+    expect(page).not_to have_content "add-to-cart-button"
   end
 
   it "should return the correct title when displaying a single product" do
@@ -218,7 +263,7 @@ describe "Visiting Products", inaccessible: true do
 
     within("div#product-description") do
       within("h1.product-title") do
-        page.should have_content("Ruby on Rails Baseball Jersey")
+        expect(page).to have_content("Ruby on Rails Baseball Jersey")
       end
     end
   end
