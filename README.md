@@ -96,7 +96,7 @@ Spree Auth Devise edge templates were last synced at spree/spree_auth_devise@761
 Running tests
 -------
 
-Be sure to bundle your dependencies and then create a dummy test app for the specs to run against.
+For spree_frontend_bootstrap, change directories to spree_bootstrap/frontend and then:
 
 ```bash
 bundle
@@ -104,11 +104,12 @@ bundle exec rake test_app
 bundle exec rspec spec
 ```
 
-When testing your applications integration with this extension you may use it's factories.
-Simply add this require statement to your spec_helper:
+For spree_auth_devise_bootstrap, change directories to spree_auth_devise_bootstrap/ and then:
 
-```ruby
-require 'spree_bootstrap_frontend/factories'
+```bash
+bundle
+bundle exec rake test_app
+bundle exec rspec spec
 ```
 
 Licence
