@@ -11,7 +11,6 @@ This has several large advantages:
 - Just 44 lines of custom SCSS, replacing 1328 lines of undocumented spree CSS. Plus most of these lines only add some visual style to the header and footer and can be removed.
 - The entire frontend can be easily customized: colours, grid, spacing, etc, by just overriding [variables from bootstrap](https://github.com/twbs/bootstrap-sass/blob/master/vendor/assets/stylesheets/bootstrap/_variables.scss) - giving a custom store design in minutes.
 - Bootstrap has some of the most [robust documentation](http://getbootstrap.com/css) of any framework, and a hugely active community. As this port uses only default bootstrap it means that entire spree frontend layout is documented by default.
-- Sites like [bootswatch](http://bootswatch.com) allow for one-file bootstrap drop-in spree themes.
 - Lots of [spree community will for bootstrap](https://groups.google.com/forum/#!searchin/spree-user/bootstrap/spree-user/B17492QdnGA/AF9vEzRzf4cJ).
 - Though this uses ‘full bootstrap’ for simplicity, you can remove the unused Bootstrap components you don’t require for minimal file sizes / weight.
 - Bootstrap is one of the largest most active open source projects out there - maintaining an entire framework just for spree makes little sense. Forget about cross browser bugs. Woo!
@@ -35,7 +34,7 @@ Installation
 
 **NOTE: The master branch is developed against edge. Use a stable branch for production.**
 
-Add the following to your gemfile. The currently supported and updated branches are `master` (edge), `2-2-stable`, and `2-3-stable`.
+Add the following to your gemfile **below** spree. The currently supported and updated branches are `master` (edge), `2-2-stable`, and `2-3-stable`.
 
 ```ruby
 gem 'spree_bootstrap_frontend', github: '200Creative/spree_bootstrap_frontend', branch: 'master'
@@ -78,6 +77,18 @@ It’s quite powerful, here are some examples created in ~10 minutes with a few 
 [![layout](http://i.imgur.com/kppJiFS.png)](http://i.imgur.com/m3zKV0s.png)
 [![layout](http://i.imgur.com/x92TXYh.png)](http://i.imgur.com/eNyNFSg.png)
 
+By default the bootstrap javascript framework isn't included as it's not used and most people won't need the extra weight. But it is part of `bootstrap-sass` so you can include it by adding the following to your javascript manifest file:
+
+````js
+//= require bootstrap-sprockets
+````
+
+or just include the specific component you want to use:
+
+````js
+//= require bootstrap/component
+````
+
 Contributing
 -------
 
@@ -92,6 +103,13 @@ Spree Auth Devise edge templates were last synced at spree/spree_auth_devise@761
 
 - Raise bugs in github’s [issues tracker](https://github.com/200Creative/spree_bootstrap_frontend/issues).
 - Further discussion can be had in the [spree google group](https://groups.google.com/forum/#!forum/spree-user).
+
+Roadmap
+-------
+
+- Bootstrap 4 is currently pre-alpha. When Bootstrap 4 becomes 'beta' a bootstrap 4 branch will be cut.
+- We are currently working with spree to make this the default frontend, see [this pull request](https://github.com/spree/spree/pull/5044). which is actively mainted alongside this repo. The current target is Spree 3.0.0.b. All contributors welcome.
+
 
 Running tests
 -------
