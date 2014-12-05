@@ -1,7 +1,8 @@
 # Spree Bootstrap (Frontend)
 
-[![Build Status](https://api.travis-ci.org/200Creative/spree_bootstrap_frontend.png?branch=master)](https://travis-ci.org/200Creative/spree_bootstrap_frontend)
 [![Code Climate](https://codeclimate.com/github/200Creative/spree_bootstrap_frontend.png)](https://codeclimate.com/github/200Creative/spree_bootstrap_frontend)
+
+*As of spree 3.0 spree_bootstrap_frontend has been merged into spree it's self and is now the default frontend. So thanks to everyone who helped! This repository will continue to be actively maintained to support legacy 2-x-stable branches*
 
 ### Switches out [Spree](https://github.com/spree/spree)’s entire frontend for a bootstrap 3 powered frontend.
 
@@ -103,12 +104,6 @@ Spree Auth Devise edge templates were last synced at spree/spree_auth_devise@761
 
 - Raise bugs in github’s [issues tracker](https://github.com/200Creative/spree_bootstrap_frontend/issues).
 - Further discussion can be had in the [spree google group](https://groups.google.com/forum/#!forum/spree-user).
-
-Roadmap
--------
-
-- Bootstrap 4 is currently pre-alpha. When Bootstrap 4 becomes 'beta' a bootstrap 4 branch will be cut.
-- We are currently working with spree to make this the default frontend, see [this pull request](https://github.com/spree/spree/pull/5044). which is actively mainted alongside this repo. The current target is Spree 3.0.0.b. All contributors welcome.
 
 
 Running tests
