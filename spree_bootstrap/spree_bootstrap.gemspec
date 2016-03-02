@@ -16,9 +16,9 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib', 'frontend/lib', 'core/lib']
   s.requirements << 'none'
 
-  s.add_runtime_dependency 'sass-rails', '~> 4.0'
-  s.add_runtime_dependency 'bootstrap-sass', '~> 3.2.0'
-  s.add_runtime_dependency 'bootstrap-kaminari-views', '~> 0.0.3'
+  s.add_runtime_dependency 'sass-rails', '>= 4.0'
+  s.add_runtime_dependency 'bootstrap-sass',  '>= 3.3.5.1', '< 3.4'
+  s.add_runtime_dependency 'bootstrap-kaminari-views', '~> 0.0.5'
 
   s.add_runtime_dependency 'spree_core', '~> 2.4.0.rc3'
   s.add_runtime_dependency 'spree_frontend', '~> 2.4.0.rc3'
