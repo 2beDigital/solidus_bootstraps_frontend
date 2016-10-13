@@ -19,4 +19,6 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'solidus_bootstrap'
   s.add_runtime_dependency 'solidus_auth_devise_bootstrap'
+  s.add_runtime_dependency 'sass-rails', '>= 5.0'
+  s.add_runtime_dependency 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 end
