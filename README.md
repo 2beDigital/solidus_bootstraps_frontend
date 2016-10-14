@@ -1,10 +1,10 @@
-# Spree Bootstrap (Frontend)
+# Solidus Bootstrap (Frontend)
 
 [![Code Climate](https://codeclimate.com/github/200Creative/spree_bootstrap_frontend.png)](https://codeclimate.com/github/200Creative/spree_bootstrap_frontend)
 
-*As of spree 3.0 spree_bootstrap_frontend has been merged into spree it's self and is now the default frontend. So thanks to everyone who helped! This repository will continue to be actively maintained to support legacy 2-x-stable branches*
+*This gem is an adaptation of bootstrap spree frontend for Solidus.*
 
-### Switches out [Spree](https://github.com/spree/spree)’s entire frontend for a bootstrap 3 powered frontend.
+### Switches out [Solidus](https://github.com/solidusio/solidus)’s entire frontend for a bootstrap 3 powered frontend.
 
 This has several large advantages:
 
@@ -38,7 +38,7 @@ Installation
 Add the following to your gemfile **below** spree. The currently supported and updated branches are `master` (edge), `2-2-stable`, and `2-3-stable`.
 
 ```ruby
-gem 'spree_bootstrap_frontend', github: '200Creative/spree_bootstrap_frontend', branch: 'master'
+gem 'spree_bootstrap_frontend', github: '2bedigital/solidus_bootstraps_frontend', branch: 'master'
 ```
 
 And run
@@ -50,7 +50,7 @@ bundle install
 Then copy the default stylesheets into your project
 
 ```bash
-rails generate spree_bootstrap_frontend:install
+rails generate solidus_bootstrap_frontend:install
 ```
 
 You'll want to select to overwrite `all.css`. Done.
