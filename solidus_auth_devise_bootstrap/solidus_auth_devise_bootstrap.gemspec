@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.summary     = 'Switches out Spree Devise''s frontend for a bootstrap 3 powered frontend'
   s.description = s.summary
 
-  s.required_ruby_version = '>= 1.9.3'
+  s.required_ruby_version = '>= 2.2.0'
   s.author      = 'Noel'
   s.email       = 'noel@2bedigital.com'
   s.homepage    = 'http://www.2bedigital.com'

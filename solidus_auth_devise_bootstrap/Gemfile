@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'solidus', '>= 1.4.0'
-gem 'solidus_auth_devise'
+gem 'solidus', '2.0'
+gem 'solidus_auth_devise', '~> 1.6'
 gem 'solidus_bootstrap', path: '../solidus_bootstrap'
 
 gemspec
