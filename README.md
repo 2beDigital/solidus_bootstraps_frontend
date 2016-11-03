@@ -35,7 +35,7 @@ Installation
 
 **NOTE: The master branch is developed against edge. Use a stable branch for production.**
 
-Add the following to your gemfile **below** spree. The currently supported and updated branches are `master` (edge), `2-2-stable`, and `2-3-stable`.
+Add the following to your gemfile **below** spree. The currently supported and updated branches are `master`.
 
 ```ruby
 gem 'spree_bootstrap_frontend', github: '2bedigital/solidus_bootstraps_frontend', branch: 'master'
