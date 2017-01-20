@@ -38,7 +38,7 @@ Installation
 Add the following to your gemfile **below** spree. The currently supported and updated branches are `master`.
 
 ```ruby
-gem 'spree_bootstrap_frontend', github: '2bedigital/solidus_bootstraps_frontend', branch: 'master'
+gem 'solidus_bootstrap_frontend', git: 'https://github.com/2beDigital/solidus_bootstraps_frontend.git', branch: 'master'
 ```
 
 And run
