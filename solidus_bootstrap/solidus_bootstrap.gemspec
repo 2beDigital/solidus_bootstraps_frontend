@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'solidus_bootstrap'
-  s.version     = '0.2.0'
+  s.version     = '0.2.1'
   s.summary     = 'Switches out Solidus’s entire frontend for a bootstrap 3 powered frontend'
   s.description = s.summary
   s.required_ruby_version = '>= 2.2.0'
