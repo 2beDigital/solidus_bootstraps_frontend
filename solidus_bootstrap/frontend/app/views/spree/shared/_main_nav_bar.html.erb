@@ -3,12 +3,8 @@
     <ul class="nav navbar-nav" data-hook>
       <li id="home-link" data-hook><%= link_to Spree.t(:home), spree.root_path %></li>
       <li id="link-to-cart" data-hook>
-        <noscript>
-          <%= link_to Spree.t(:cart), '/cart' %>
-        </noscript>
-        &nbsp;
+        <%= render partial: 'spree/shared/link_to_cart' %>
       </li>
-      <script>Spree.fetch_cart()</script>
     </ul>
   </div>
 </nav>
