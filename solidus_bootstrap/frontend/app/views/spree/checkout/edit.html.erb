@@ -9,7 +9,7 @@
   </div>
 
   <div class="row" data-hook="checkout_content">
-    <div class="<%= if @order.state != 'confirm' then 'col-xs-12 col-sm-12 col-lg-3' else 'col-sm-12' end %>" data-hook="checkout_form_wrapper">
+    <div class="<%= if @order.state != 'confirm' then 'col-xs-12 col-sm-12 col-lg-9' else 'col-sm-12' end %>" data-hook="checkout_form_wrapper">
       <%= form_for @order, :url => update_checkout_path(@order.state), :html => { :id => "checkout_form_#{@order.state}" } do |form| %>
         <% if @order.state == 'address' || !@order.email? %>
           <div class="panel panel-default">
