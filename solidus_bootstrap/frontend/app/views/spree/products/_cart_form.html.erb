@@ -5,7 +5,7 @@
       <div id="product-variants" class="col-md-6">
         <h3 class="product-section-title"><%= Spree.t(:variants) %></h3>
         <ul class="list-group">
-          <% @product.variants_and_option_values(current_pricing_options).each_with_index do |variant, index| %>
+          <% @product.variants_and_option_values_for(current_pricing_options).each_with_index do |variant, index| %>
             <li>
                <%= radio_button_tag "variant_id", variant.id, index == 0, 'data-price' => variant.price_for(current_pricing_options)  %>
               <%= label_tag "variant_id_#{ variant.id }" do %>
