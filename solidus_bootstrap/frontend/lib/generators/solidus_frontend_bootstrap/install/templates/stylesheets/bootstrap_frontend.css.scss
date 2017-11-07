@@ -29,6 +29,11 @@ $icon-font-path: "../../bootstrap/";
     margin-bottom: 0;
   }
 }
+
+.dropdown-menu li a{
+  color:#333 !important;
+}
+
 #spree-footer {
   background: $gray-dark;
   padding-top: $padding-base-horizontal;

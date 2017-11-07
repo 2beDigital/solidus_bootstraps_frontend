@@ -1,0 +1,24 @@
+<% if supported_locales_options.size > 1 %>
+  <li id="locale-selector" class="visible-md-inline visible-lg-inline">
+    <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenuLanguage">
+      <%#<span class="visible-xs-inline visible-sm-inline"><%#= fa_icon("language", text: Spree.t(:'i18n.language')) ></span><span class="inline hidden-md">&nbsp;%><%= I18n.locale.to_s.upcase %> <%# </span>
+      = image_tag(flag_image_url([I18n.locale, I18n.locale]), alt: Spree.t(:'i18n.language'), title: Spree.t(:'i18n.language')) 
+      %><span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuLanguage">
+      <% available_locales_options.each do |locale| %>
+          <%= content_tag(:li, :class => (I18n.locale == locale[1])? 'active' : nil,
+                          :data => { :href => set_locale_path, :value => locale[1] }, role: 'presentation') do %>
+              <%= link_to switch_language(locale[1]), :tabindex => -1 do %>
+                 <%= image_tag(flag_image_url(locale[1])) %>&nbsp;<%= locale[0].split(' ')[0] %>
+              <% end %>
+           <% end %>
+      <% end %>
+    </ul>
+    <%= form_tag(set_locale_path) do %>
+        <noscript>
+          <%= submit_tag %>
+        </noscript>
+    <% end %>
+  </li>
+<% end %>
