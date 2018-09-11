@@ -77,6 +77,6 @@ Spree.ready ($) ->
       else
         ($ '#shipping .inner').show()
         ($ '#shipping .inner input, #shipping .inner select').prop 'disabled', false
-        Spree.updateState('s')
+        updateState('s')
 
     update_shipping_form_state order_use_billing
