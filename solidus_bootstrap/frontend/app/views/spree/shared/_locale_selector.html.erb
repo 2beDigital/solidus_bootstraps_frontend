@@ -1,4 +1,4 @@
-<% if SolidusI18n::Config.available_locales.many? %>
+<% if defined?(SolidusGlobalize) && SolidusI18n::Config.available_locales.many? %>
   <li id="locale-selector" class="visible-md-inline visible-lg-inline">
     <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenuLanguage">
       <%= I18n.locale.to_s.upcase %><span class="caret"></span>
